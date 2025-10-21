@@ -31,4 +31,4 @@ sequelize.sync().then(() => {
     });
 }).catch(err => {
     console.error('Unable to sync database:', err);
-});
+}); 
