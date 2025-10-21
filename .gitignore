@@ -1,28 +1,5 @@
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
-
-# testing
-/coverage
-
-# production
-/build
-
-# misc
-.DS_Store
-
-# environment variables
+﻿node_modules/
 .env
-.env.local
-.env.development.local
-.env.production.local
-
-
-# logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# editor settings (optional)
-.vscode/
+*.log
+.DS_Store
+package-lock.json
