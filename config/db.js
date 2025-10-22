@@ -13,7 +13,16 @@ const sequelize = new Sequelize(
       ssl: {
         require: true,
         rejectUnauthorized: false
-      }
+      },
+      // CRITICAL: Add UTF-8 charset for Telugu/Unicode support
+      charset: 'utf8mb4',
+      collate: 'utf8mb4_unicode_ci'
+    },
+    // Define default charset for all models
+    define: {
+      charset: 'utf8mb4',
+      collate: 'utf8mb4_unicode_ci',
+      timestamps: true
     },
     pool: {
       max: 5,
@@ -28,9 +37,16 @@ const sequelize = new Sequelize(
 const connectDB = async () => {
   try {
     await sequelize.authenticate();
-    console.log('MySQL Connected...');
+    console.log('✅ MySQL Connected with UTF-8 support...');
+    
+    // Set connection charset immediately after connecting
+    await sequelize.query("SET NAMES 'utf8mb4'");
+    await sequelize.query("SET CHARACTER SET utf8mb4");
+    console.log('✅ UTF-8mb4 encoding set for connection');
+    
   } catch (error) {
-    console.error('Unable to connect to the database:', error);
+    console.error('❌ Unable to connect to the database:', error);
+    process.exit(1);
   }
 };
 
