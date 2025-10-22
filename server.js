@@ -15,8 +15,11 @@ const PORT = process.env.PORT || 5000;
 // **CORS Configuration**
 const allowedOrigins = [
   'http://localhost:3000',
-  'https://client-henna-three.vercel.app'
+  'https://client-henna-three.vercel.app',
+  'https://www.amoghampindivantalu.com',
+  'https://amoghampindivantalu.com'
 ];
+
 
 app.use(cors({
   origin: function (origin, callback) {
